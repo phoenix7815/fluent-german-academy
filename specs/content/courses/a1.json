@@ -1,0 +1,107 @@
+{
+  "slug": "a1",
+  "level": "A1",
+  "title": "German A1 Course",
+  "hero": {
+    "eyebrow": "Learn German A1 from Zero",
+    "headline": "Build Your Strong Foundation in German",
+    "description": "Start your German-language journey with practical vocabulary, grammar, speaking, listening, reading, and writing. No previous German knowledge required. Online classes are also available through Zoom or Google Meet links."
+  },
+  "duration": "Approximately 2–3 months",
+  "fee": {
+    "amount": 16000,
+    "currency": "INR",
+    "display": "₹16,000"
+  },
+  "entryRequirement": "No German knowledge required",
+  "highlights": [
+    "Complete A1 syllabus",
+    "Regular speaking practice",
+    "Listening practice",
+    "Reading & writing practice",
+    "Weekly tests",
+    "Mock tests",
+    "Daily vocabulary",
+    "Real-life conversation practice",
+    "Doubt-clearing sessions",
+    "Exam-oriented preparation"
+  ],
+  "sections": {
+    "grammar": [
+      "Alphabet & pronunciation",
+      "Personal pronouns",
+      "Articles: der, die, das",
+      "Definite & indefinite articles",
+      "Nominativ",
+      "Akkusativ",
+      "Basic Dativ",
+      "Possessive articles",
+      "Negation: nicht & kein",
+      "W-Fragen",
+      "Ja/Nein questions",
+      "Präsens",
+      "Modal verbs",
+      "Separable verbs",
+      "Imperativ",
+      "Basic Perfekt",
+      "Prepositions",
+      "Sentence structure",
+      "Adjective basics",
+      "Common conjunctions"
+    ],
+    "vocabulary": [
+      "Family",
+      "Home & Rooms",
+      "Food & Drinks",
+      "Shopping",
+      "Clothes",
+      "Travel & Transport",
+      "School & Education",
+      "Work & Professions",
+      "Time & Daily Routine",
+      "Weather",
+      "Body & Health",
+      "Hobbies & Free Time",
+      "City & Places"
+    ],
+    "speaking": [
+      "Describe people and places",
+      "Talk about past experiences",
+      "Make plans and arrangements",
+      "Give simple opinions",
+      "Make requests and suggestions",
+      "Explain problems",
+      "Talk about work and education",
+      "Describe daily routines and experiences",
+      "Participate in everyday conversations"
+    ],
+    "writing": [
+      "Writing practice"
+    ],
+    "listening": [
+      "Listening comprehension"
+    ],
+    "reading": [
+      "Reading comprehension"
+    ],
+    "examPreparation": [
+      "Practice for Lesen, Hören, Schreiben and Sprechen",
+      "Regular practice tests",
+      "Mock examinations"
+    ]
+  },
+  "whoCanJoin": [
+    "Complete beginners",
+    "Students",
+    "Working professionals",
+    "People planning Ausbildung in Germany",
+    "Students preparing for German language examinations",
+    "Anyone interested in learning German"
+  ],
+  "skills": [
+    "Lesen",
+    "Hören",
+    "Schreiben",
+    "Sprechen"
+  ]
+}

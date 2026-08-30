@@ -1,0 +1,9 @@
+{
+  "id": "sample-001",
+  "title": "Sample gallery item",
+  "image": "/images/gallery/sample.jpg",
+  "alt": "Describe the image",
+  "category": "classroom",
+  "caption": "",
+  "visible": false
+}

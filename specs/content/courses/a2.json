@@ -1,0 +1,112 @@
+{
+  "slug": "a2",
+  "level": "A2",
+  "title": "German A2 Course",
+  "hero": {
+    "eyebrow": "Take Your German to the Next Level",
+    "headline": "Build Confidence. Speak More. Understand More.",
+    "description": "Develop stronger German communication skills for everyday conversations and common situations. Online classes are also available through Zoom or Google Meet links."
+  },
+  "duration": "Approximately 2–3 months",
+  "fee": {
+    "amount": 20000,
+    "currency": "INR",
+    "display": "₹20,000"
+  },
+  "entryRequirement": "Completed A1 German",
+  "highlights": [
+    "Complete A2 syllabus",
+    "Regular speaking practice",
+    "Listening practice",
+    "Reading & writing practice",
+    "Weekly tests",
+    "Mock tests",
+    "Daily vocabulary practice",
+    "Real-life conversation",
+    "Doubt-clearing sessions",
+    "Exam-oriented preparation"
+  ],
+  "sections": {
+    "grammar": [
+      "Revision of A1 grammar",
+      "Nominativ, Akkusativ & Dativ",
+      "Personal & possessive pronouns",
+      "Reflexive verbs",
+      "Modal verbs",
+      "Separable & inseparable verbs",
+      "Perfekt",
+      "Präteritum of common verbs",
+      "Imperativ",
+      "Two-way prepositions",
+      "Wechselpräpositionen",
+      "Prepositions with Akkusativ & Dativ",
+      "Adjective endings",
+      "Comparative & superlative",
+      "Subordinate clauses",
+      "weil, dass, wenn",
+      "Coordinating conjunctions",
+      "Infinitiv mit zu",
+      "Reflexive constructions",
+      "Indefinite pronouns",
+      "Basic relative structures",
+      "Sentence structure & word order"
+    ],
+    "vocabulary": [
+      "Home & Household",
+      "Family & Relationships",
+      "Work & Professions",
+      "Education",
+      "Shopping & Services",
+      "Food & Restaurants",
+      "Travel & Holidays",
+      "Health & Body",
+      "Appointments & Plans",
+      "Weather",
+      "City & Environment",
+      "Technology & Communication",
+      "Hobbies & Free Time",
+      "Feelings & Opinions"
+    ],
+    "speaking": [
+      "Describe people and places",
+      "Talk about past experiences",
+      "Make plans and arrangements",
+      "Give simple opinions",
+      "Make requests and suggestions",
+      "Explain problems",
+      "Talk about work and education",
+      "Describe daily routines and experiences",
+      "Participate in everyday conversations"
+    ],
+    "writing": [
+      "Reading & writing practice"
+    ],
+    "listening": [
+      "Listening practice",
+      "Understand everyday information"
+    ],
+    "reading": [
+      "Reading & writing practice"
+    ],
+    "examPreparation": [
+      "Practice for Lesen, Hören, Schreiben and Sprechen",
+      "Regular tests",
+      "Mock exams",
+      "Vocabulary practice",
+      "Speaking activities"
+    ]
+  },
+  "whoCanJoin": [
+    "Students who have completed A1",
+    "A1-level German learners",
+    "Students preparing for an A2 examination",
+    "People planning Ausbildung in Germany",
+    "Learners who want stronger everyday German communication"
+  ],
+  "skills": [
+    "Lesen",
+    "Hören",
+    "Schreiben",
+    "Sprechen"
+  ]
+}

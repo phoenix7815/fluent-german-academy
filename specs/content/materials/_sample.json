@@ -1,0 +1,9 @@
+{
+  "id": "sample-001",
+  "title": "Sample learning material",
+  "description": "Replace with an approved material.",
+  "type": "pdf",
+  "url": "/documents/sample.pdf",
+  "level": "A1",
+  "available": false
+}

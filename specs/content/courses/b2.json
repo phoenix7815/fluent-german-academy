@@ -1,0 +1,140 @@
+{
+  "slug": "b2",
+  "level": "B2",
+  "title": "German B2 Course",
+  "hero": {
+    "eyebrow": "Master German at an Advanced Level",
+    "headline": "Speak Fluently. Express Yourself Clearly. Communicate with Confidence.",
+    "description": "Develop advanced German communication skills for complex discussions, detailed texts, academic and professional situations. Online classes are also available through Zoom or Google Meet links."
+  },
+  "duration": "Approximately 3–4 months",
+  "fee": {
+    "amount": 34000,
+    "currency": "INR",
+    "display": "₹34,000"
+  },
+  "entryRequirement": "Completed B1",
+  "highlights": [
+    "Complete B2 syllabus",
+    "Advanced speaking practice",
+    "Intensive listening practice",
+    "Advanced writing practice",
+    "Reading comprehension",
+    "Regular tests",
+    "Full mock tests",
+    "Daily advanced vocabulary",
+    "Discussion & debate sessions",
+    "Doubt-clearing sessions",
+    "Exam-oriented preparation",
+    "Telc/Goethe-style exam practice"
+  ],
+  "sections": {
+    "grammar": [
+      "Complete A1–B1 grammar revision",
+      "Advanced case usage",
+      "N-Deklination",
+      "Adjective & noun declension",
+      "Advanced prepositions",
+      "Complex sentence structures",
+      "Subordinate clauses",
+      "Relative clauses",
+      "Konjunktiv I & II",
+      "Indirect speech",
+      "Passive voice",
+      "Passive with modal verbs",
+      "Ersatzformen des Passivs",
+      "Partizip I & II",
+      "Infinitiv constructions",
+      "um … zu / ohne … zu / statt … zu",
+      "Nominalisierung",
+      "Verb-Noun combinations",
+      "Advanced connectors",
+      "obwohl, während, sodass, indem, nachdem, bevor, falls",
+      "Correlative conjunctions",
+      "Advanced word order",
+      "Formal German structures",
+      "Advanced adjective structures"
+    ],
+    "vocabulary": [
+      "Work & Career",
+      "Education & University",
+      "Technology & Digitalisation",
+      "Environment & Climate",
+      "Health & Society",
+      "Media & News",
+      "Politics & Society",
+      "Economy & Finance",
+      "Travel & Globalisation",
+      "Science & Research",
+      "Social Issues",
+      "Culture & Arts",
+      "Opinions, Arguments & Discussions"
+    ],
+    "speaking": [
+      "Express complex opinions clearly",
+      "Give reasons and arguments",
+      "Agree and disagree appropriately",
+      "Participate confidently in discussions",
+      "Compare different viewpoints",
+      "Discuss advantages and disadvantages",
+      "Give structured presentations",
+      "Explain complex situations",
+      "Make recommendations",
+      "Defend your position in a discussion",
+      "Speak spontaneously on familiar topics"
+    ],
+    "writing": [
+      "Formal emails and letters",
+      "Complaints and enquiries",
+      "Argumentative texts",
+      "Opinions and statements",
+      "Reports",
+      "Articles",
+      "Discussions",
+      "Structured exam essays",
+      "Summaries"
+    ],
+    "listening": [
+      "Interviews",
+      "Discussions",
+      "Presentations",
+      "Radio and podcasts",
+      "News reports",
+      "Everyday conversations",
+      "Academic and professional conversations",
+      "Identify main ideas, details, opinions, arguments, and speaker attitudes"
+    ],
+    "reading": [
+      "Newspaper and magazine articles",
+      "Informative texts",
+      "Opinion pieces",
+      "Reports",
+      "Advertisements",
+      "Formal correspondence",
+      "Academic and professional texts",
+      "Skimming, scanning, understanding context, identifying arguments, and extracting key information"
+    ],
+    "examPreparation": [
+      "Exam-style reading tasks",
+      "Listening exercises",
+      "Writing correction & feedback",
+      "Speaking practice",
+      "Regular tests",
+      "Full mock examinations"
+    ]
+  },
+  "whoCanJoin": [
+    "Learners who have completed B1",
+    "B1-level German learners",
+    "Students preparing for B2 examinations",
+    "Students planning Ausbildung or higher education in Germany",
+    "Professionals who need stronger German communication skills",
+    "Learners aiming for advanced German proficiency"
+  ],
+  "skills": [
+    "Lesen",
+    "Hören",
+    "Schreiben",
+    "Sprechen"
+  ]
+}

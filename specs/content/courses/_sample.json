@@ -1,0 +1,52 @@
+{
+  "slug": "sample",
+  "level": "A1",
+  "title": "Sample German Course",
+  "hero": {
+    "eyebrow": "Sample positioning",
+    "headline": "Sample course headline",
+    "description": "Replace this text with approved course content."
+  },
+  "duration": "Example duration",
+  "fee": {
+    "amount": 0,
+    "currency": "INR",
+    "display": "₹0"
+  },
+  "entryRequirement": "Example requirement",
+  "highlights": [
+    "Sample highlight"
+  ],
+  "sections": {
+    "grammar": [
+      "Sample topic"
+    ],
+    "vocabulary": [
+      "Sample topic"
+    ],
+    "speaking": [
+      "Sample skill"
+    ],
+    "writing": [
+      "Sample skill"
+    ],
+    "listening": [
+      "Sample skill"
+    ],
+    "reading": [
+      "Sample skill"
+    ],
+    "examPreparation": [
+      "Sample activity"
+    ]
+  },
+  "whoCanJoin": [
+    "Sample audience"
+  ],
+  "skills": [
+    "Lesen",
+    "Hören",
+    "Schreiben",
+    "Sprechen"
+  ]
+}

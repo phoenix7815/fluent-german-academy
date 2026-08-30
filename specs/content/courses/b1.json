@@ -1,0 +1,125 @@
+{
+  "slug": "b1",
+  "level": "B1",
+  "title": "German B1 Course",
+  "hero": {
+    "eyebrow": "Become an Independent German Speaker",
+    "headline": "Move Beyond the Basics. Speak with Confidence.",
+    "description": "Develop independent communication skills: express opinions, describe experiences, discuss everyday topics, and understand the main points of standard German. Online classes are also available through Zoom or Google Meet links."
+  },
+  "duration": "Approximately 3–4 months",
+  "fee": {
+    "amount": 24000,
+    "currency": "INR",
+    "display": "₹24,000"
+  },
+  "entryRequirement": "Completed A2",
+  "highlights": [
+    "Complete B1 syllabus",
+    "Intensive speaking practice",
+    "Listening practice",
+    "Reading & writing practice",
+    "Daily vocabulary practice",
+    "Weekly tests",
+    "Mock tests",
+    "Real-life conversation",
+    "Doubt-clearing sessions",
+    "Exam-oriented preparation",
+    "Telc/Goethe-style practice"
+  ],
+  "sections": {
+    "grammar": [
+      "Complete A1–A2 grammar revision",
+      "Nominativ, Akkusativ, Dativ & Genitiv",
+      "Adjective declension",
+      "Personal, possessive & reflexive pronouns",
+      "Prepositions with cases",
+      "Wechselpräpositionen",
+      "Perfekt & Präteritum",
+      "Plusquamperfekt",
+      "Modal verbs",
+      "Separable & inseparable verbs",
+      "Konjunktiv II",
+      "würde + Infinitiv",
+      "Subordinate clauses",
+      "weil, dass, wenn, obwohl, während, damit",
+      "Relative clauses",
+      "Infinitiv mit zu",
+      "um … zu / ohne … zu / statt … zu",
+      "Passive voice basics",
+      "Indirect questions",
+      "Word order & sentence structure",
+      "Connectors and linking expressions"
+    ],
+    "vocabulary": [
+      "Work & Career",
+      "Education & Training",
+      "Housing & Living",
+      "Relationships & Society",
+      "Health & Lifestyle",
+      "Travel & Tourism",
+      "Environment",
+      "Technology & Media",
+      "Shopping & Consumer Life",
+      "City & Society",
+      "News & Current Topics",
+      "Feelings, Opinions & Arguments",
+      "Culture & Free Time"
+    ],
+    "speaking": [
+      "Express and justify opinions",
+      "Describe experiences and events",
+      "Talk about plans and goals",
+      "Give reasons and explanations",
+      "Make suggestions",
+      "Agree and disagree politely",
+      "Discuss everyday and social topics",
+      "Give presentations on familiar subjects",
+      "Describe pictures and situations",
+      "Participate in discussions",
+      "Communicate independently in everyday situations"
+    ],
+    "writing": [
+      "Personal and formal emails",
+      "Letters and messages",
+      "Requests and complaints",
+      "Opinions and arguments",
+      "Descriptions",
+      "Reports and short texts",
+      "Structured exam answers"
+    ],
+    "listening": [
+      "Understand the main points of conversations",
+      "Follow announcements and everyday information",
+      "Understand emails, articles and advertisements",
+      "Identify important details",
+      "Understand opinions and attitudes",
+      "Work with authentic German texts"
+    ],
+    "reading": [
+      "Understand emails, articles and advertisements",
+      "Identify important details",
+      "Work with authentic German texts"
+    ],
+    "examPreparation": [
+      "Practice all four skills: Lesen, Hören, Schreiben, Sprechen",
+      "Regular tests",
+      "Mock examinations",
+      "Vocabulary practice",
+      "Exam-focused exercises"
+    ]
+  },
+  "whoCanJoin": [
+    "Learners who have completed A2",
+    "A2-level German learners",
+    "Students preparing for B1 examinations",
+    "Students planning Ausbildung in Germany",
+    "Learners who want to communicate independently in German"
+  ],
+  "skills": [
+    "Lesen",
+    "Hören",
+    "Schreiben",
+    "Sprechen"
+  ]
+}

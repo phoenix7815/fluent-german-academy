@@ -5,6 +5,9 @@ import type { Course, GalleryItem, Material } from '../content/types'
 type IconName = 'arrow' | 'arrowUp' | 'book' | 'check' | 'chat' | 'clock' | 'close' | 'external' | 'globe' | 'menu' | 'phone' | 'pin' | 'play' | 'spark' | 'target'
 
 const whatsappHref = (phone: string) => `https://wa.me/91${phone}`
+const academyAddress = 'Dss 11 basement, Red Square Market, near hdfc branch, Mehta Nagar, Hisar, Haryana 125004'
+const mapsHref = siteInfo.addressSource
+const mapsEmbedSrc = 'https://www.google.com/maps?q=29.1554074,75.72109&z=17&output=embed'
 
 function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
   const common = { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, 'aria-hidden': true }
@@ -108,6 +111,65 @@ function CourseCard({ course, featured = false }: { course: Course; featured?: b
   </article>
 }
 
+function AcademyVideo({ src, title, controls = false }: { src: string; title: string; controls?: boolean }) {
+  return <video className="academy-video" src={src} title={title} controls={controls} playsInline />
+}
+
+function VideoSlider({ videos, label }: { videos: string[][]; label: string }) {
+  const [activeIndex, setActiveIndex] = useState(0)
+  useEffect(() => {
+    const interval = window.setInterval(() => setActiveIndex(index => (index + 1) % videos.length), 6500)
+    return () => window.clearInterval(interval)
+  }, [videos.length])
+  const [src, title] = videos[activeIndex]
+  return <div className="video-carousel" aria-label={`${label} carousel`}>
+    <div className="video-player-head">
+      <div><span className="video-player-label">{label}</span><h3>{title}</h3></div>
+      <span className="video-player-count">{String(activeIndex + 1).padStart(2, '0')} <i>/</i> {String(videos.length).padStart(2, '0')}</span>
+    </div>
+    <div className="video-carousel-stage"><article className="video-carousel-card"><AcademyVideo src={src} title={title} controls /></article></div>
+    <div className="video-player-footer">
+      <div className="video-player-dots" role="tablist" aria-label={`${label} selection`}>
+        {videos.map(([, videoTitle], index) => <button type="button" role="tab" aria-selected={index === activeIndex} aria-label={`Show ${videoTitle}`} className={index === activeIndex ? 'is-active' : ''} key={videoTitle} onClick={() => setActiveIndex(index)} />)}
+      </div>
+    </div>
+  </div>
+}
+
+function AcademyMedia() {
+  const introVideos = [
+    ['/media/intro.mp4', 'A welcome to Fluent German Academy'],
+    ['/media/intro2.mp4', 'A German learning moment at the academy'],
+    ['/media/intro3.mp4', 'Inside a German class'],
+  ]
+  const testimonies = [
+    ['/media/testimony1.mp4', 'Learner testimony 1'],
+    ['/media/testimony2.mp4', 'Learner testimony 2'],
+    ['/media/testimony3.mp4', 'Learner testimony 3'],
+    ['/media/testimony4.mp4', 'Learner testimony 4'],
+  ]
+
+  return <>
+    <section className="section media-section">
+      <div className="container">
+        <div className="split-heading"><SectionHeading eyebrow="See the academy" title="A feel for the journey." text="Meet the learning atmosphere, then hear from people who are building their German with us." /><span className="media-heading-mark">01 / 03</span></div>
+        <VideoSlider videos={introVideos} label="Inside the academy" />
+      </div>
+    </section>
+    <section className="section testimony-section">
+      <div className="container"><div className="split-heading"><SectionHeading eyebrow="Learner voices" title="Progress sounds better together." text="A few words from learners on their way through German." /><span className="media-heading-mark">02 / 03</span></div><VideoSlider videos={testimonies} label="Learner testimony" /></div>
+    </section>
+  </>
+}
+
+function ResultsShowcase() {
+  return <section className="section results-section"><div className="container results-grid"><div className="results-copy"><p className="eyebrow">Progress you can see</p><h2>Small wins become<br /><em>big confidence.</em></h2><p>Regular tests and focused practice help learners understand where they are and what to work on next.</p><Button href="/courses" variant="outline">Explore the levels</Button></div><figure className="result-feature"><img src="/media/result_b1.jpeg" alt="B1 German course result" /><figcaption>B1 results</figcaption></figure></div></section>
+}
+
+function WeeklyTestShowcase() {
+  return <section className="section weekly-test-section"><div className="container weekly-test-grid"><div><p className="eyebrow">Keep checking in</p><h2>Practice makes<br /><em>progress visible.</em></h2><p>Weekly tests give every learner a clear next step after exploring the course path.</p></div><figure><img src="/media/weekly-test.jpeg" alt="Weekly German test result" /><figcaption>Weekly test progress</figcaption></figure></div></section>
+}
+
 function StatStrip() {
   return <div className="stat-strip"><div><strong>A1</strong><span>Start here</span></div><div><strong>A2</strong><span>Build confidence</span></div><div><strong>B1</strong><span>Speak independently</span></div><div><strong>B2</strong><span>Go advanced</span></div></div>
 }
@@ -115,18 +177,20 @@ function StatStrip() {
 function Home() {
   return <>
     <section className="hero home-hero"><div className="container hero-grid"><div className="hero-copy"><p className="eyebrow"><span className="eyebrow-dot" />German for your next chapter</p><h1>Find your voice<br />in <em>German.</em></h1><p className="hero-text">Structured courses. Everyday conversation. A clear path from your first “Hallo” to confident German communication. Online classes are also available through Zoom or Google Meet links.</p><div className="hero-actions"><Button href="/courses">Explore courses</Button><Button href="/contact" variant="quiet">Talk to the academy</Button></div><div className="hero-note"><span className="avatar-stack"><i>A</i><i>G</i><i>Du</i></span><span>Four levels, one clear learning journey</span></div></div><div className="hero-art" role="img" aria-label="Abstract illustration of a German learning journey"><div className="art-sun" /><div className="art-arc arc-one" /><div className="art-arc arc-two" /><div className="art-card card-top"><span>DEUTSCH</span><strong>Sprich<br />mit Mut.</strong></div><div className="art-card card-bottom"><span className="mini-level">B2</span><span>Advanced<br />communication</span><Icon name="arrow" size={17} /></div><div className="art-word word-one">Hallo</div><div className="art-word word-two">Lernen</div><div className="art-line" /></div></div><div className="container"><StatStrip /></div></section>
+    <ResultsShowcase />
     <section className="section courses-preview"><div className="container"><div className="split-heading"><SectionHeading eyebrow="The learning path" title="A level for every next step." text="Whether you are starting from zero or polishing advanced German, your next level is easy to find." /><Link href="/courses" className="text-link heading-link">See all courses <Icon name="arrow" size={17} /></Link></div><div className="course-grid">{courses.map((course, index) => <CourseCard key={course.slug} course={course} featured={index === 0} />)}</div></div></section>
+    <WeeklyTestShowcase />
     <section className="section dark-section"><div className="container journey-grid"><div><p className="eyebrow eyebrow-light">A simple way forward</p><h2>Learn with a map,<br /><em>not a maze.</em></h2><p className="dark-lede">Each level builds on the last, with the grammar, vocabulary and practice you need to keep moving.</p><Button href="/about" variant="outline">How we teach</Button></div><div className="journey-path">{courses.map((course, index) => <div className="journey-step" key={course.slug}><div className="journey-node"><CourseLevelBadge level={course.level} /></div><div><strong>{course.level}</strong><span>{index === 0 ? 'Your foundation' : course.hero.eyebrow}</span></div></div>)}</div></div></section>
     <section className="section skills-section"><div className="container"><SectionHeading eyebrow="What gets stronger" title="The four skills behind real progress." text="German is more than memorising rules. Every course gives you space to understand, express and use the language." align="center" /><div className="skills-grid"><SkillCard number="01" icon="globe" title="Sprechen" text="Find the words, make yourself understood, and grow comfortable in everyday conversations." /><SkillCard number="02" icon="play" title="Hören" text="Train your ear for natural German, from announcements to authentic conversations." /><SkillCard number="03" icon="book" title="Lesen" text="Build the confidence to understand messages, articles, information and ideas." /><SkillCard number="04" icon="target" title="Schreiben" text="Write clearly for everyday situations and structured exam tasks." /></div></div></section>
     <section className="section exam-section"><div className="container exam-card"><div className="exam-stamp"><Icon name="spark" size={30} /><span>ready<br />when<br />you are</span></div><div><p className="eyebrow">Prepared for the moment</p><h2>Practice that makes<br /><em>progress visible.</em></h2><p>Regular tests, mock examinations and exam-focused exercises are part of the journey across every level.</p></div><Button href="/courses">See the syllabus</Button></div></section>
-    <section className="section muted-section"><div className="container"><div className="split-heading"><SectionHeading eyebrow="Inside the academy" title="A place to keep learning." text="We are preparing more ways for you to learn, practise and stay connected." /><div className="preview-note">Gallery and learning resources will appear here as approved academy content becomes available.</div></div><div className="empty-preview-grid"><Link href="/gallery" className="preview-tile gallery-tile"><span>Gallery</span><strong>See the learning<br />in motion <Icon name="arrow" size={18} /></strong></Link><Link href="/material" className="preview-tile material-tile"><span>Material</span><strong>Useful resources,<br />all in one place <Icon name="arrow" size={18} /></strong></Link></div></div></section>
+    <AcademyMedia />
     <ContactBand />
   </>
 }
 
 function SkillCard({ number, icon, title, text }: { number: string; icon: IconName; title: string; text: string }) { return <article className="skill-card"><div className="skill-top"><span>{number}</span><Icon name={icon} size={23} /></div><h3>{title}</h3><p>{text}</p></article> }
 
-function ContactBand() { return <section className="contact-band"><div className="container contact-band-inner"><div><p className="eyebrow eyebrow-light">Your next chapter starts here</p><h2>Ready to say<br /><em>“Ich bin bereit”?</em></h2></div><div><p>Ask about the right level, upcoming batches and admission.</p><Button href="/contact">Start a conversation</Button></div></div></section> }
+function ContactBand() { return <section className="contact-band"><div className="container contact-band-inner"><div><p className="eyebrow eyebrow-light">Your next chapter starts here</p><h2>Ready to say<br /><em>“Ich bin bereit”?</em></h2></div><div><p>Ask about the right level, upcoming batches and admission.</p><div className="contact-band-details"><a href={mapsHref} target="_blank" rel="noreferrer"><Icon name="pin" size={17} /><span><strong>{academyAddress}</strong><small>Open in Google Maps</small></span></a><div><Icon name="phone" size={17} /><span><strong>{siteInfo.phones[0]}</strong><small>Call or WhatsApp</small></span></div></div><Button href="/contact">Start a conversation</Button></div></div></section> }
 
 function PageIntro({ eyebrow, title, text }: { eyebrow: string; title: ReactNode; text: string }) { return <section className="page-intro"><div className="container"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p className="page-lede">{text}</p></div></section> }
 
@@ -146,11 +210,26 @@ function MaterialCard({ item }: { item: Material }) { const external = item.url.
 
 function EmptyState({ type }: { type: 'gallery' | 'material' }) { const gallery = type === 'gallery'; return <div className="empty-state"><div className="empty-icon"><Icon name={gallery ? 'spark' : 'book'} size={28} /></div><h2>{gallery ? 'The gallery is taking shape.' : 'Learning material is on its way.'}</h2><p>{gallery ? 'Approved academy photos will be added here as they become available.' : 'Approved PDFs, links and resources will be added here as they become available.'}</p><Button href="/contact" variant="outline">Ask the academy</Button></div> }
 
-function Gallery() { return <><PageIntro eyebrow="Inside the academy" title={<>Learning looks good<br /><em>on you.</em></>} text="A glimpse into Fluent German Academy Hisar, coming soon. This space will grow with approved academy moments." /><section className="section empty-section"><div className="container">{galleryItems.some(item => item.visible) ? <GalleryGrid items={galleryItems} /> : <EmptyState type="gallery" />}</div></section><ContactBand /></> }
+function AcademyGalleryMedia() {
+  const media = [
+    ['/media/intro.mp4', 'Academy welcome video', 'video'],
+    ['/media/intro2.mp4', 'A German learning moment', 'video'],
+    ['/media/intro3.mp4', 'Inside a German class', 'video'],
+    ['/media/testimony1.mp4', 'Learner testimony', 'video'],
+    ['/media/testimony2.mp4', 'Learner testimony', 'video'],
+    ['/media/testimony3.mp4', 'Learner testimony', 'video'],
+    ['/media/testimony4.mp4', 'Learner testimony', 'video'],
+    ['/media/result_b1.jpeg', 'B1 course result', 'image'],
+    ['/media/weekly-test.jpeg', 'Weekly test progress', 'image'],
+  ]
+  return <div className="gallery-media-grid">{media.map(([src, title, type]) => <figure className="gallery-media-item" key={src}>{type === 'video' ? <AcademyVideo src={src} title={title} controls /> : <img src={src} alt={title} />}<figcaption>{title}</figcaption></figure>)}</div>
+}
+
+function Gallery() { return <><PageIntro eyebrow="Inside the academy" title={<>Learning looks good<br /><em>on you.</em></>} text="A glimpse into Fluent German Academy Hisar, from class moments and learner voices to visible progress." /><section className="section empty-section"><div className="container">{galleryItems.some(item => item.visible) ? <GalleryGrid items={galleryItems} /> : <AcademyGalleryMedia />}</div></section><ContactBand /></> }
 
 function Material() { return <><PageIntro eyebrow="Your learning shelf" title={<>Resources for the<br /><em>road ahead.</em></>} text="Find approved learning resources, practice material and useful links in one place." /><section className="section empty-section"><div className="container">{materialItems.some(item => item.available) ? <div className="material-grid">{materialItems.filter(item => item.available).map(item => <MaterialCard key={item.id} item={item} />)}</div> : <EmptyState type="material" />}</div></section><ContactBand /></> }
 
-function Contact() { return <><PageIntro eyebrow="Contact the academy" title={<>Let’s start a<br /><em>conversation.</em></>} text="Choose a number below to chat directly with Fluent German Academy Hisar on WhatsApp." /><section className="section contact-section"><div className="container simple-contact-layout"><div className="contact-card simple-contact-card"><p className="eyebrow">Fluent German Academy Hisar</p><h2>Chat with us<br /><em>on WhatsApp.</em></h2><p>Choose either academy number to ask about courses, admissions, upcoming batches and online classes through Zoom or Google Meet.</p><div className="whatsapp-number-list">{siteInfo.phones.map((phone, index) => <a key={phone} href={whatsappHref(phone)} target="_blank" rel="noreferrer"><span className="whatsapp-number-index">0{index + 1}</span><span className="whatsapp-number-copy"><small>WhatsApp chat</small><strong>{phone}</strong></span><Icon name="external" size={19} /></a>)}</div></div></div></section></> }
+function Contact() { return <><PageIntro eyebrow="Contact the academy" title={<>Let’s start a<br /><em>conversation.</em></>} text="Choose a number below to chat directly with Fluent German Academy Hisar on WhatsApp." /><section className="section contact-section"><div className="container contact-page-grid"><div className="contact-card simple-contact-card"><p className="eyebrow">Fluent German Academy Hisar</p><h2>Chat with us<br /><em>on WhatsApp.</em></h2><p>Choose either academy number to ask about courses, admissions, upcoming batches and online classes through Zoom or Google Meet.</p><div className="whatsapp-number-list">{siteInfo.phones.map((phone, index) => <a key={phone} href={whatsappHref(phone)} target="_blank" rel="noreferrer"><span className="whatsapp-number-index">0{index + 1}</span><span className="whatsapp-number-copy"><small>WhatsApp chat</small><strong>{phone}</strong></span><Icon name="external" size={19} /></a>)}</div></div><div className="contact-map-card"><p className="eyebrow">Find the academy</p><h2>Visit us in <em>Hisar.</em></h2><a className="address-link" href={mapsHref} target="_blank" rel="noreferrer"><Icon name="pin" size={18} />{academyAddress}<Icon name="external" size={16} /></a><iframe className="map-frame" src={mapsEmbedSrc} title="Fluent German Academy Hisar location map" loading="lazy" sandbox="allow-scripts allow-same-origin" /></div></div></section></> }
 
 function NotFound() { return <section className="not-found"><div><p className="eyebrow">404 / page not found</p><h1>Looks like this<br /><em>path wandered off.</em></h1><Button href="/">Back to home</Button></div></section> }
 

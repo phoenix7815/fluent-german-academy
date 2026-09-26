@@ -8,8 +8,8 @@ type PageMetadata = {
 
 const pageMetadata: Record<string, PageMetadata> = {
   '/': {
-    title: 'Learn German from A1 to B2',
-    description: 'Learn German from A1 to B2 with structured courses, conversation practice, and exam preparation at Fluent German Academy Hisar.',
+    title: 'Top German Classes in Hisar',
+    description: 'Explore top German classes in Hisar at Fluent German Academy, with A1 to B2 courses, speaking practice, structured lessons, and exam preparation.',
   },
   '/about': {
     title: 'About the Academy',
@@ -114,6 +114,7 @@ export function updateSeo(path: string, course?: Course) {
         name: siteInfo.name,
         url: siteUrl(),
         image: `${siteUrl()}/academy-logo.jpg`,
+        logo: `${siteUrl()}/academy-logo.jpg`,
         telephone: siteInfo.phones.map(phone => `+91${phone}`),
         address: {
           '@type': 'PostalAddress',

@@ -1,6 +1,7 @@
 import { useEffect, useState, type MouseEvent, type ReactNode } from 'react'
 import { courses, galleryItems, materialItems, siteInfo } from '../content'
 import type { Course, GalleryItem, Material } from '../content/types'
+import { updateSeo } from './seo'
 
 type IconName = 'arrow' | 'arrowUp' | 'book' | 'check' | 'chat' | 'clock' | 'close' | 'external' | 'globe' | 'menu' | 'phone' | 'pin' | 'play' | 'spark' | 'target'
 
@@ -257,6 +258,6 @@ function Contact() { return <><PageIntro eyebrow="Contact the academy" title={<>
 
 function NotFound() { return <section className="not-found"><div><p className="eyebrow">404 / page not found</p><h1>Looks like this<br /><em>path wandered off.</em></h1><Button href="/">Back to home</Button></div></section> }
 
-function App() { const path = usePath(); const normalizedPath = path !== '/' ? path.replace(/\/+$/, '') : path; const detailSlug = normalizedPath.match(/^\/courses\/([^/]+)$/)?.[1]; const detailCourse = detailSlug ? courses.find(item => item.slug === detailSlug) : undefined; useEffect(() => { const pageNames: Record<string, string> = { '/': 'Learn German from A1 to B2', '/about': 'About the Academy', '/courses': 'German Courses A1 to B2', '/gallery': 'Academy Gallery', '/material': 'Learning Material', '/contact': 'Contact the Academy' }; const pageName = detailCourse?.title ?? pageNames[normalizedPath] ?? 'Page not found'; document.title = `${pageName} | ${siteInfo.name}`; document.querySelector('meta[name="description"]')?.setAttribute('content', detailCourse?.hero.description ?? `Explore German courses and contact ${siteInfo.name} in Hisar.`); }, [detailCourse, normalizedPath]); let page: ReactNode; if (normalizedPath === '/') page = <Home />; else if (normalizedPath === '/about') page = <About />; else if (normalizedPath === '/courses') page = <Courses />; else if (normalizedPath === '/gallery') page = <Gallery />; else if (normalizedPath === '/material') page = <Material />; else if (normalizedPath === '/contact') page = <Contact />; else if (detailSlug) page = detailCourse ? <CourseDetail course={detailCourse} /> : <NotFound />; else page = <NotFound />; return <Layout>{page}</Layout> }
+function App() { const path = usePath(); const normalizedPath = path !== '/' ? path.replace(/\/+$/, '') : path; const detailSlug = normalizedPath.match(/^\/courses\/([^/]+)$/)?.[1]; const detailCourse = detailSlug ? courses.find(item => item.slug === detailSlug) : undefined; useEffect(() => { updateSeo(normalizedPath, detailCourse) }, [detailCourse, normalizedPath]); let page: ReactNode; if (normalizedPath === '/') page = <Home />; else if (normalizedPath === '/about') page = <About />; else if (normalizedPath === '/courses') page = <Courses />; else if (normalizedPath === '/gallery') page = <Gallery />; else if (normalizedPath === '/material') page = <Material />; else if (normalizedPath === '/contact') page = <Contact />; else if (detailSlug) page = detailCourse ? <CourseDetail course={detailCourse} /> : <NotFound />; else page = <NotFound />; return <Layout>{page}</Layout> }
 
 export default App

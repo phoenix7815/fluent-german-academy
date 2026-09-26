@@ -79,6 +79,7 @@ const getCourseSchema = (course: Course, url: string) => ({
     '@type': 'EducationalOrganization',
     name: siteInfo.name,
     url: siteUrl(),
+    image: `${siteUrl()}/academy-logo.jpg`,
   },
   offers: {
     '@type': 'Offer',
@@ -104,6 +105,8 @@ export function updateSeo(path: string, course?: Course) {
   upsertMeta('property', 'og:description', description)
   upsertMeta('property', 'og:type', 'website')
   upsertMeta('property', 'og:url', canonical)
+  upsertMeta('property', 'og:image', `${siteUrl()}/academy-logo.jpg`)
+  upsertMeta('name', 'twitter:image', `${siteUrl()}/academy-logo.jpg`)
   upsertLink('canonical', canonical)
 
   const schema = course
@@ -113,6 +116,7 @@ export function updateSeo(path: string, course?: Course) {
         '@type': 'EducationalOrganization',
         name: siteInfo.name,
         url: siteUrl(),
+        image: `${siteUrl()}/academy-logo.jpg`,
         telephone: siteInfo.phones.map(phone => `+91${phone}`),
         address: {
           '@type': 'PostalAddress',

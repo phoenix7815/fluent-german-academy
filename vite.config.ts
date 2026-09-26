@@ -17,7 +17,7 @@ const seoFiles = (): Plugin => ({
       .filter(file => file.endsWith('.json') && !file.startsWith('_'))
       .map(file => file.replace(/\.json$/, ''))
     const paths = ['/', '/about', '/courses', '/gallery', '/material', '/contact', ...courseSlugs.map(slug => `/courses/${slug}`)]
-    const urls = paths.map(path => `    <url><loc>${siteUrl}${path}</loc></url>`).join('\n')
+    const urls = paths.map(path => `    <url><loc>${siteUrl}${path}</loc><changefreq>monthly</changefreq></url>`).join('\n')
     this.emitFile({
       type: 'asset',
       fileName: 'sitemap.xml',
@@ -26,7 +26,7 @@ const seoFiles = (): Plugin => ({
     this.emitFile({
       type: 'asset',
       fileName: 'robots.txt',
-      source: `User-agent: *\nAllow: /\nDisallow: /404\nSitemap: ${siteUrl}/sitemap.xml\n`,
+      source: `User-agent: *\nAllow: /\nDisallow: /404\nDisallow: /*?*\nSitemap: ${siteUrl}/sitemap.xml\n`,
     })
   },
 })

@@ -33,10 +33,7 @@ const pageMetadata: Record<string, PageMetadata> = {
   },
 }
 
-const siteUrl = () => {
-  const configuredUrl = import.meta.env.VITE_SITE_URL?.trim()
-  return (configuredUrl || window.location.origin).replace(/\/+$/, '')
-}
+const siteUrl = () => 'https://www.fluentgermanacademy.com'
 
 const upsertMeta = (attribute: 'name' | 'property', key: string, content: string) => {
   let element = document.head.querySelector<HTMLMetaElement>(`meta[${attribute}="${key}"]`)

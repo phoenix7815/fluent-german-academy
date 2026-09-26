@@ -3,9 +3,7 @@ import react from '@vitejs/plugin-react';
 import { readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 const getSiteUrl = () => {
-    const configuredUrl = process.env.VITE_SITE_URL?.trim();
-    const vercelUrl = process.env.VERCEL_URL?.trim();
-    return (configuredUrl ? configuredUrl : vercelUrl ? `https://${vercelUrl}` : 'http://localhost:5173').replace(/\/+$/, '');
+    return 'https://www.fluentgermanacademy.com';
 };
 const seoFiles = () => ({
     name: 'seo-files',

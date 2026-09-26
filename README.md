@@ -13,9 +13,8 @@ Build for production with `npm run build` and preview the output with `npm run p
 
 ## SEO configuration
 
-Set `VITE_SITE_URL` to the canonical HTTPS origin before a production build. Vercel's
-`VERCEL_URL` is used automatically when `VITE_SITE_URL` is not set, while local builds use
-`http://localhost:5173`. The build emits `sitemap.xml` and `robots.txt` with the resolved origin.
+The production canonical origin is `https://www.fluentgermanacademy.com`. The build emits
+`sitemap.xml` and `robots.txt` with that origin.
 
 ## Content
 

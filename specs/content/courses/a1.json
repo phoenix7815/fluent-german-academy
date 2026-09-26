@@ -13,6 +13,11 @@
     "currency": "INR",
     "display": "₹16,000"
   },
+  "onlineFee": {
+    "amount": 14000,
+    "currency": "INR",
+    "display": "₹14,000"
+  },
   "entryRequirement": "No German knowledge required",
   "highlights": [
     "Complete A1 syllabus",

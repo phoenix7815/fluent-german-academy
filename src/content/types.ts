@@ -7,6 +7,7 @@ export type Course = {
   hero: { eyebrow: string; headline: string; description: string }
   duration: string
   fee: { amount: number; currency: string; display: string }
+  onlineFee: { amount: number; currency: string; display: string }
   entryRequirement: string
   highlights: string[]
   sections: Record<CourseSectionKey, string[]>

@@ -13,6 +13,11 @@
     "currency": "INR",
     "display": "₹34,000"
   },
+  "onlineFee": {
+    "amount": 30000,
+    "currency": "INR",
+    "display": "₹30,000"
+  },
   "entryRequirement": "Completed B1",
   "highlights": [
     "Complete B2 syllabus",

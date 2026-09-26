@@ -1,7 +1,6 @@
 import { useEffect, useState, type MouseEvent, type ReactNode } from 'react'
 import { courses, galleryItems, materialItems, siteInfo } from '../content'
 import type { Course, GalleryItem, Material } from '../content/types'
-import { updateSeo } from './seo'
 
 type IconName = 'arrow' | 'arrowUp' | 'book' | 'check' | 'chat' | 'clock' | 'close' | 'external' | 'globe' | 'menu' | 'phone' | 'pin' | 'play' | 'spark' | 'target'
 
@@ -9,6 +8,16 @@ const whatsappHref = (phone: string) => `https://wa.me/91${phone}`
 const academyAddress = 'Dss 11 basement, Red Square Market, near hdfc branch, Mehta Nagar, Hisar, Haryana 125004'
 const mapsHref = siteInfo.addressSource
 const mapsEmbedSrc = 'https://www.google.com/maps?q=29.1554074,75.72109&z=17&output=embed'
+const resultImages = [
+  ['/media/result_b1.jpeg', 'B1 German course result'],
+  ['/media/result_b1_1.jpeg', 'B1 German course result'],
+  ['/media/result_b1_2.jpeg', 'B1 German course result'],
+  ['/media/result_b1_3.jpeg', 'B1 German course result'],
+  ['/media/result_b1_4.jpeg', 'B1 German course result'],
+  ['/media/result_b1_5.jpeg', 'B1 German course result'],
+  ['/media/result_b1_6.jpeg', 'B1 German course result'],
+  ['/media/result_b1_7.jpeg', 'B1 German course result'],
+]
 
 function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
   const common = { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, 'aria-hidden': true }
@@ -106,7 +115,8 @@ function CourseCard({ course, featured = false }: { course: Course; featured?: b
     <div className="course-card-top"><CourseLevelBadge level={course.level} /><span className="course-card-index">0{courses.indexOf(course) + 1}</span></div>
     <h3>{course.title}</h3><p className="course-positioning">{course.hero.eyebrow}</p>
     <p className="course-description">{course.hero.description}</p>
-    <div className="course-meta"><span><Icon name="clock" size={17} />{course.duration.replace('Approximately ', '')}</span><span className="course-fee">{course.fee.display}</span></div>
+    <div className="course-meta"><span><Icon name="clock" size={17} />{course.duration.replace('Approximately ', '')}</span><span className="course-format">Online batch</span></div>
+    <div className="course-fee-block"><div><span>Offline batch</span><strong>{course.fee.display}</strong></div><div><span>Online batch</span><strong>{course.onlineFee.display}</strong></div></div>
     <div className="course-entry"><span>Entry point</span><strong>{course.entryRequirement}</strong></div>
     <Link href={`/courses/${course.slug}`} className="text-link">View course <Icon name="arrow" size={17} /></Link>
   </article>
@@ -119,16 +129,19 @@ function AcademyVideo({ src, title, controls = false }: { src: string; title: st
 function VideoSlider({ videos, label }: { videos: string[][]; label: string }) {
   const [activeIndex, setActiveIndex] = useState(0)
   useEffect(() => {
-    const interval = window.setInterval(() => setActiveIndex(index => (index + 1) % videos.length), 6500)
+    const interval = window.setInterval(() => setActiveIndex(index => (index + 1) % videos.length), 5200)
     return () => window.clearInterval(interval)
   }, [videos.length])
   const [src, title] = videos[activeIndex]
+  const showPrevious = () => setActiveIndex(index => (index - 1 + videos.length) % videos.length)
+  const showNext = () => setActiveIndex(index => (index + 1) % videos.length)
   return <div className="video-carousel" aria-label={`${label} carousel`}>
     <div className="video-player-head">
       <div><span className="video-player-label">{label}</span><h3>{title}</h3></div>
       <span className="video-player-count">{String(activeIndex + 1).padStart(2, '0')} <i>/</i> {String(videos.length).padStart(2, '0')}</span>
     </div>
-    <div className="video-carousel-stage"><article className="video-carousel-card"><AcademyVideo src={src} title={title} controls /></article></div>
+    <div className="video-player-progress" aria-hidden="true"><span key={activeIndex} /></div>
+    <div className="video-carousel-stage"><article className="video-carousel-card"><AcademyVideo key={src} src={src} title={title} controls /></article><div className="video-stage-caption"><span>Fluent German Academy</span><strong>Watch the journey</strong></div><div className="video-stage-controls"><button type="button" onClick={showPrevious} aria-label="Show previous video"><Icon name="arrow" size={19} /></button><button type="button" onClick={showNext} aria-label="Show next video"><Icon name="arrow" size={19} /></button></div></div>
     <div className="video-player-footer">
       <div className="video-player-dots" role="tablist" aria-label={`${label} selection`}>
         {videos.map(([, videoTitle], index) => <button type="button" role="tab" aria-selected={index === activeIndex} aria-label={`Show ${videoTitle}`} className={index === activeIndex ? 'is-active' : ''} key={videoTitle} onClick={() => setActiveIndex(index)} />)}
@@ -164,7 +177,17 @@ function AcademyMedia() {
 }
 
 function ResultsShowcase() {
-  return <section className="section results-section"><div className="container results-grid"><div className="results-copy"><p className="eyebrow">Progress you can see</p><h2>Small wins become<br /><em>big confidence.</em></h2><p>Regular tests and focused practice help learners understand where they are and what to work on next.</p><Button href="/courses" variant="outline">Explore the levels</Button></div><figure className="result-feature"><img src="/media/result_b1.jpeg" alt="B1 German course result" /><figcaption>B1 results</figcaption></figure></div></section>
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = window.setInterval(() => setActiveIndex(index => (index + 1) % resultImages.length), 3600)
+    return () => window.clearInterval(interval)
+  }, [])
+
+  const showPrevious = () => setActiveIndex(index => (index - 1 + resultImages.length) % resultImages.length)
+  const showNext = () => setActiveIndex(index => (index + 1) % resultImages.length)
+
+  return <section className="results-hero" aria-labelledby="results-title"><div className="container results-hero-inner"><div className="results-hero-copy"><p className="eyebrow">Real learner progress</p><h1 id="results-title">Results that make<br /><em>progress visible.</em></h1><p>See the work our learners are putting in, one milestone at a time.</p><div className="results-hero-actions"><Button href="/courses">Start your journey</Button><span><strong>{String(activeIndex + 1).padStart(2, '0')}</strong> / {String(resultImages.length).padStart(2, '0')}</span></div></div><div className="results-slider" aria-label="Learner results slideshow"><div className="results-slide"><img src={resultImages[activeIndex][0]} alt={`${resultImages[activeIndex][1]} ${activeIndex + 1}`} /><span className="results-slide-label">B1 learner result</span></div><div className="results-slider-controls"><button type="button" onClick={showPrevious} aria-label="Show previous result"><Icon name="arrow" size={19} /></button><div className="results-dots" role="tablist" aria-label="Choose learner result">{resultImages.map(([src], index) => <button key={src} type="button" role="tab" className={index === activeIndex ? 'is-active' : ''} onClick={() => setActiveIndex(index)} aria-label={`Show result ${index + 1}`} aria-selected={index === activeIndex} />)}</div><button type="button" onClick={showNext} aria-label="Show next result"><Icon name="arrow" size={19} /></button></div></div></div></section>
 }
 
 function WeeklyTestShowcase() {
@@ -177,8 +200,8 @@ function StatStrip() {
 
 function Home() {
   return <>
-    <section className="hero home-hero"><div className="container hero-grid"><div className="hero-copy"><p className="eyebrow"><span className="eyebrow-dot" />German for your next chapter</p><h1>Find your voice<br />in <em>German.</em></h1><p className="hero-text">Structured courses. Everyday conversation. A clear path from your first “Hallo” to confident German communication. Online classes are also available through Zoom or Google Meet links.</p><div className="hero-actions"><Button href="/courses">Explore courses</Button><Button href="/contact" variant="quiet">Talk to the academy</Button></div><div className="hero-note"><span className="avatar-stack"><i>A</i><i>G</i><i>Du</i></span><span>Four levels, one clear learning journey</span></div></div><div className="hero-art" role="img" aria-label="Abstract illustration of a German learning journey"><div className="art-sun" /><div className="art-arc arc-one" /><div className="art-arc arc-two" /><div className="art-card card-top"><span>DEUTSCH</span><strong>Sprich<br />mit Mut.</strong></div><div className="art-card card-bottom"><span className="mini-level">B2</span><span>Advanced<br />communication</span><Icon name="arrow" size={17} /></div><div className="art-word word-one">Hallo</div><div className="art-word word-two">Lernen</div><div className="art-line" /></div></div><div className="container"><StatStrip /></div></section>
     <ResultsShowcase />
+    <section className="hero home-hero"><div className="container hero-grid"><div className="hero-copy"><p className="eyebrow"><span className="eyebrow-dot" />German for your next chapter</p><h1>Find your voice<br />in <em>German.</em></h1><p className="hero-text">Structured courses. Everyday conversation. A clear path from your first “Hallo” to confident German communication. Online classes are also available through Zoom or Google Meet links.</p><div className="hero-actions"><Button href="/courses">Explore courses</Button><Button href="/contact" variant="quiet">Talk to the academy</Button></div><div className="hero-note"><span className="avatar-stack"><i>A</i><i>G</i><i>Du</i></span><span>Four levels, one clear learning journey</span></div></div><div className="hero-art" role="img" aria-label="Abstract illustration of a German learning journey"><div className="art-sun" /><div className="art-arc arc-one" /><div className="art-arc arc-two" /><div className="art-card card-top"><span>DEUTSCH</span><strong>Sprich<br />mit Mut.</strong></div><div className="art-card card-bottom"><span className="mini-level">B2</span><span>Advanced<br />communication</span><Icon name="arrow" size={17} /></div><div className="art-word word-one">Hallo</div><div className="art-word word-two">Lernen</div><div className="art-line" /></div></div><div className="container"><StatStrip /></div></section>
     <section className="section courses-preview"><div className="container"><div className="split-heading"><SectionHeading eyebrow="The learning path" title="A level for every next step." text="Whether you are starting from zero or polishing advanced German, your next level is easy to find." /><Link href="/courses" className="text-link heading-link">See all courses <Icon name="arrow" size={17} /></Link></div><div className="course-grid">{courses.map((course, index) => <CourseCard key={course.slug} course={course} featured={index === 0} />)}</div></div></section>
     <WeeklyTestShowcase />
     <section className="section dark-section"><div className="container journey-grid"><div><p className="eyebrow eyebrow-light">A simple way forward</p><h2>Learn with a map,<br /><em>not a maze.</em></h2><p className="dark-lede">Each level builds on the last, with the grammar, vocabulary and practice you need to keep moving.</p><Button href="/about" variant="outline">How we teach</Button></div><div className="journey-path">{courses.map((course, index) => <div className="journey-step" key={course.slug}><div className="journey-node"><CourseLevelBadge level={course.level} /></div><div><strong>{course.level}</strong><span>{index === 0 ? 'Your foundation' : course.hero.eyebrow}</span></div></div>)}</div></div></section>
@@ -223,7 +246,7 @@ function AcademyGalleryMedia() {
     ['/media/result_b1.jpeg', 'B1 course result', 'image'],
     ['/media/weekly-test.jpeg', 'Weekly test progress', 'image'],
   ]
-  return <div className="gallery-media-grid">{media.map(([src, title, type]) => <figure className="gallery-media-item" key={src}>{type === 'video' ? <AcademyVideo src={src} title={title} controls /> : <img src={src} alt={title} />}<figcaption>{title}</figcaption></figure>)}</div>
+  return <div className="gallery-media-grid">{media.map(([src, title, type]) => <figure className={`gallery-media-item ${type === 'video' ? 'media-video-item' : ''}`} key={src}>{type === 'video' ? <AcademyVideo src={src} title={title} controls /> : <img src={src} alt={title} />}<figcaption>{title}</figcaption></figure>)}</div>
 }
 
 function Gallery() { return <><PageIntro eyebrow="Inside the academy" title={<>Learning looks good<br /><em>on you.</em></>} text="A glimpse into Fluent German Academy Hisar, from class moments and learner voices to visible progress." /><section className="section empty-section"><div className="container">{galleryItems.some(item => item.visible) ? <GalleryGrid items={galleryItems} /> : <AcademyGalleryMedia />}</div></section><ContactBand /></> }
@@ -234,6 +257,6 @@ function Contact() { return <><PageIntro eyebrow="Contact the academy" title={<>
 
 function NotFound() { return <section className="not-found"><div><p className="eyebrow">404 / page not found</p><h1>Looks like this<br /><em>path wandered off.</em></h1><Button href="/">Back to home</Button></div></section> }
 
-function App() { const path = usePath(); const normalizedPath = path !== '/' ? path.replace(/\/+$/, '') : path; const detailSlug = normalizedPath.match(/^\/courses\/([^/]+)$/)?.[1]; const detailCourse = detailSlug ? courses.find(item => item.slug === detailSlug) : undefined; useEffect(() => { updateSeo(normalizedPath, detailCourse) }, [detailCourse, normalizedPath]); let page: ReactNode; if (normalizedPath === '/') page = <Home />; else if (normalizedPath === '/about') page = <About />; else if (normalizedPath === '/courses') page = <Courses />; else if (normalizedPath === '/gallery') page = <Gallery />; else if (normalizedPath === '/material') page = <Material />; else if (normalizedPath === '/contact') page = <Contact />; else if (detailSlug) page = detailCourse ? <CourseDetail course={detailCourse} /> : <NotFound />; else page = <NotFound />; return <Layout>{page}</Layout> }
+function App() { const path = usePath(); const normalizedPath = path !== '/' ? path.replace(/\/+$/, '') : path; const detailSlug = normalizedPath.match(/^\/courses\/([^/]+)$/)?.[1]; const detailCourse = detailSlug ? courses.find(item => item.slug === detailSlug) : undefined; useEffect(() => { const pageNames: Record<string, string> = { '/': 'Learn German from A1 to B2', '/about': 'About the Academy', '/courses': 'German Courses A1 to B2', '/gallery': 'Academy Gallery', '/material': 'Learning Material', '/contact': 'Contact the Academy' }; const pageName = detailCourse?.title ?? pageNames[normalizedPath] ?? 'Page not found'; document.title = `${pageName} | ${siteInfo.name}`; document.querySelector('meta[name="description"]')?.setAttribute('content', detailCourse?.hero.description ?? `Explore German courses and contact ${siteInfo.name} in Hisar.`); }, [detailCourse, normalizedPath]); let page: ReactNode; if (normalizedPath === '/') page = <Home />; else if (normalizedPath === '/about') page = <About />; else if (normalizedPath === '/courses') page = <Courses />; else if (normalizedPath === '/gallery') page = <Gallery />; else if (normalizedPath === '/material') page = <Material />; else if (normalizedPath === '/contact') page = <Contact />; else if (detailSlug) page = detailCourse ? <CourseDetail course={detailCourse} /> : <NotFound />; else page = <NotFound />; return <Layout>{page}</Layout> }
 
 export default App

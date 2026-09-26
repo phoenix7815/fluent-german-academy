@@ -123,26 +123,33 @@ function CourseCard({ course, featured = false }: { course: Course; featured?: b
   </article>
 }
 
-function AcademyVideo({ src, title, controls = false }: { src: string; title: string; controls?: boolean }) {
-  return <video className="academy-video" src={src} title={title} controls={controls} playsInline />
+function AcademyVideo({ src, title, controls = false, onEnded, onPlay, onPause, onTimeUpdate }: { src: string; title: string; controls?: boolean; onEnded?: () => void; onPlay?: () => void; onPause?: () => void; onTimeUpdate?: (currentTime: number, duration: number) => void }) {
+  return <video className="academy-video" src={src} title={title} controls={controls} playsInline onEnded={onEnded} onPlay={onPlay} onPause={onPause} onTimeUpdate={event => onTimeUpdate?.(event.currentTarget.currentTime, event.currentTarget.duration)} />
 }
 
 function VideoSlider({ videos, label }: { videos: string[][]; label: string }) {
   const [activeIndex, setActiveIndex] = useState(0)
-  useEffect(() => {
-    const interval = window.setInterval(() => setActiveIndex(index => (index + 1) % videos.length), 5200)
-    return () => window.clearInterval(interval)
-  }, [videos.length])
+  const [videoProgress, setVideoProgress] = useState(0)
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
   const [src, title] = videos[activeIndex]
   const showPrevious = () => setActiveIndex(index => (index - 1 + videos.length) % videos.length)
   const showNext = () => setActiveIndex(index => (index + 1) % videos.length)
+  useEffect(() => {
+    setVideoProgress(0)
+    setIsVideoPlaying(false)
+  }, [src])
+  useEffect(() => {
+    if (isVideoPlaying) return
+    const timeout = window.setTimeout(showNext, 4000)
+    return () => window.clearTimeout(timeout)
+  }, [isVideoPlaying, src])
   return <div className="video-carousel" aria-label={`${label} carousel`}>
     <div className="video-player-head">
       <div><span className="video-player-label">{label}</span><h3>{title}</h3></div>
       <span className="video-player-count">{String(activeIndex + 1).padStart(2, '0')} <i>/</i> {String(videos.length).padStart(2, '0')}</span>
     </div>
-    <div className="video-player-progress" aria-hidden="true"><span key={activeIndex} /></div>
-    <div className="video-carousel-stage"><article className="video-carousel-card"><AcademyVideo key={src} src={src} title={title} controls /></article><div className="video-stage-caption"><span>Fluent German Academy</span><strong>Watch the journey</strong></div><div className="video-stage-controls"><button type="button" onClick={showPrevious} aria-label="Show previous video"><Icon name="arrow" size={19} /></button><button type="button" onClick={showNext} aria-label="Show next video"><Icon name="arrow" size={19} /></button></div></div>
+    <div className="video-player-progress" aria-hidden="true"><span style={{ width: `${videoProgress}%` }} /></div>
+    <div className="video-carousel-stage"><article className="video-carousel-card"><AcademyVideo key={src} src={src} title={title} controls onEnded={showNext} onPlay={() => setIsVideoPlaying(true)} onPause={() => setIsVideoPlaying(false)} onTimeUpdate={(currentTime, duration) => setVideoProgress(duration ? (currentTime / duration) * 100 : 0)} /></article><div className="video-stage-caption"><span>Fluent German Academy</span><strong>Watch the journey</strong></div><div className="video-stage-controls"><button type="button" onClick={showPrevious} aria-label="Show previous video"><Icon name="arrow" size={19} /></button><button type="button" onClick={showNext} aria-label="Show next video"><Icon name="arrow" size={19} /></button></div></div>
     <div className="video-player-footer">
       <div className="video-player-dots" role="tablist" aria-label={`${label} selection`}>
         {videos.map(([, videoTitle], index) => <button type="button" role="tab" aria-selected={index === activeIndex} aria-label={`Show ${videoTitle}`} className={index === activeIndex ? 'is-active' : ''} key={videoTitle} onClick={() => setActiveIndex(index)} />)}

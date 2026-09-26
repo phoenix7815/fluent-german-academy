@@ -77,8 +77,8 @@ section.detail-overview .detail-price span:after { content: 'Offline batch'; fon
 .media-video-item:hover { box-shadow: 0 27px 55px rgba(23,36,33,.18); }
 .media-video-item .academy-video { border-radius: 2px; }
 .video-player-progress { background: var(--paper-deep); height: 3px; margin: 0 7px 15px; overflow: hidden; }
-.video-player-progress span { animation: video-progress 5.2s linear infinite; background: var(--coral); display: block; height: 100%; transform-origin: left; width: 100%; }
-.video-stage-caption { align-items: end; background: linear-gradient(transparent, rgba(14,43,39,.9)); bottom: 0; color: var(--white); display: flex; flex-direction: column; left: 0; padding: 38px 18px 16px; position: absolute; right: 0; text-align: right; }
+.video-player-progress span { background: var(--coral); display: block; height: 100%; transition: width .15s linear; }
+.video-stage-caption { align-items: end; background: linear-gradient(transparent, rgba(14,43,39,.9)); bottom: 0; color: var(--white); display: flex; flex-direction: column; left: 0; padding: 38px 18px 16px; pointer-events: none; position: absolute; right: 0; text-align: right; }
 .video-stage-caption span { color: var(--lime); font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .video-stage-caption strong { font-family: Fraunces, Georgia, serif; font-size: 19px; font-weight: 500; margin-top: 4px; }
 .video-player-footer { gap: 22px; justify-content: space-between; }
@@ -86,8 +86,6 @@ section.detail-overview .detail-price span:after { content: 'Offline batch'; fon
 .video-switcher-controls button { align-items: center; background: var(--forest); border: 0; border-radius: 50%; color: var(--white); cursor: pointer; display: flex; height: 34px; justify-content: center; transition: background .2s ease, transform .2s ease; width: 34px; }
 .video-switcher-controls button:last-child svg { transform: rotate(180deg); }
 .video-switcher-controls button:hover, .video-switcher-controls button:focus-visible { background: var(--coral); transform: translateY(-2px); }
-@keyframes video-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@media (prefers-reduced-motion: reduce) { .video-player-progress span { animation: none; transform: scaleX(1); } }
 
 .carousel-position-left:hover { filter: brightness(.7) blur(1px); opacity: .72; transform: translateX(calc(-50% - min(34vw, 385px))) translateZ(-90px) rotateY(20deg) scale(.82); }.carousel-position-right:hover { filter: brightness(.7) blur(1px); opacity: .72; transform: translateX(calc(-50% + min(34vw, 385px))) translateZ(-90px) rotateY(-20deg) scale(.82); }.carousel-position-active:hover { transform: translateX(-50%) translateZ(80px) rotateY(0deg) scale(1.025); }
 

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <title>Fluent German Academy</title>
+  <rect width="128" height="128" rx="24" fill="#fffdf8"/>
+  <path fill="#111827" fill-rule="evenodd" d="M16 103 56.5 19.2c2.8-5.8 11.2-5.8 14 0L112 103H91.8L64 45.5 36.2 103H16Zm35.6-27.2h25L64 49.9 51.6 75.8Z"/>
+  <path d="M16 76.5c14.5-14.1 31.1-21.1 49.8-21.1 16.7 0 31.9 5 46.2 15.1" fill="none" stroke="#e21d2f" stroke-linecap="round" stroke-width="9"/>
+  <path d="M20 84.8c14.1-12.3 29.7-18.4 46.8-18.4 15.2 0 29.2 4.3 41.8 12.8" fill="none" stroke="#f4c51c" stroke-linecap="round" stroke-width="7"/>
+</svg>
